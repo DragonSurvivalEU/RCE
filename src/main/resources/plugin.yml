@@ -1,0 +1,4 @@
+name: DragonRCE
+version: 1.0
+author: k0l0r3k99
+main: eu.dragonsurvival.rce.RCE
