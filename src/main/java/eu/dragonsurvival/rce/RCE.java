@@ -21,22 +21,24 @@ public final class RCE extends JavaPlugin {
             msg = m.replaceAll("$1");
         }
     }
-    
+
     @Override
     public void onEnable() {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void event(AsyncPlayerChatEvent e) {
-        if (PATTERN.matcher(e.getMessage()).find()) {
-            e.setCancelled(true);
+        String msg = fix(e.getMessage());
+        if (!msg.equals(e.getMessage())) {
+            e.setMessage(msg);
         }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void event(PlayerCommandPreprocessEvent e) {
-        if (PATTERN.matcher(e.getMessage()).find()) {
-            e.setCancelled(true);
+        String msg = fix(e.getMessage());
+        if (!msg.equals(e.getMessage())) {
+            e.setMessage(msg);
         }
     }
 }
