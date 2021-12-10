@@ -5,11 +5,12 @@ import java.util.regex.Pattern;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class RCE extends JavaPlugin {
+public final class RCE extends JavaPlugin implements Listener {
     public static final Pattern PATTERN = Pattern.compile("\\$\\{(.*?)\\}");
 
     public static String fix(String msg) {
@@ -24,6 +25,7 @@ public final class RCE extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
