@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class RCE extends JavaPlugin implements Listener {
-    public static final Pattern PATTERN = Pattern.compile("\\$\\{(.*?)\\}");
+    public static final Pattern PATTERN = Pattern.compile("\\$(?:[\u00A7&][0-9A-FK-ORa-fk-or])*\\{(.*?)\\}");
 
     public static String fix(String msg) {
         while (true) {
